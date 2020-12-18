@@ -11,23 +11,28 @@ Let A, B be matrices and v a vector.
 bands - extracts diagonals from a matrix (e.g., tridiagonal)
 diag - creates a diagonal matrix or extracts the diagonal
 diam(A) - calculates diameter of a matrix
-ek - Standard basis element.  `ek(i,n)`  
-fliplr - Flip matrix elements left/right  
+ek - Standard basis element.  `ek(i,n)`
+elemat - Elementary matrix (Type II, or III)  
+fliplr - Flip matrix elements left/right
+fliptranspose - Flip and transpose  
 flipud - Flip matrix up/down
-gt - greater than, e.g., A > B, returns 1/0 matrix  
-hankel - Generate hankel matrix  
+gt - greater than, e.g., A > B, returns 1/0 matrix
+hadamard - Elementwise product, A.*B 
+hankel - Generate hankel matrix
+kron(A,B) - Kronecker product of A with B
+lt - Less than, e.g., A < B, returns 1/0 matrix
+mkcentro - Make a centrosymmetric matrix
+mkskewcentro - Make a skew-centrosymmetric matrix  
 iscentro - determines if A is centrosymmetric (bool)
 isequal - determines if two matrices are equal (bool)  
 ism - determines if a matrix is an M-matrix (bool)  
 isnormal - determines if a matrix A is normal
-kron(A,B) - Kronecker product of A with B
-mkcentro - makes a centrosymmetric matrix
 reshape -  Maps m x n --> r x c where mn = rc
 rot90 - Rotates a matrix 90 degrees counterclockwise  
 rowsto - Generates a row stochastic matrix  
 size - caclulates the size of a matrix
 sum - computes sum of entries per dimension
-toeplitz - Generates a Toeplitz matrix (see hankel)    
+toeplitz - Generates a Toeplitz matrix (see also hankel)    
 
 
 
@@ -51,7 +56,6 @@ diam(A)
 ```
 
 
-
 ## ek
 Returns and elementary vector (0, 0, 0, ..., 1, 0, ..., 0)
 ``` 
@@ -60,8 +64,7 @@ Returns and elementary vector (0, 0, 0, ..., 1, 0, ..., 0)
 ek(k, n)
 ```
  
-
-
+ 
 ## Hankel
 Returns a Hankel matrix.
 hankel(c,r) is a non-symmetric Toeplitz matrix having C as its

@@ -37,14 +37,14 @@ int main ()
 		using Scalar = double;
 #endif
 		
-		using Matrix = mtl::mat::dense2D< Scalar >;
-		Matrix A = rowsto< Matrix >(5,5);   //
+	using Matrix = mtl::mat::dense2D< Scalar >;
+	Matrix A = rowsto< Matrix >(5,5);   //
 		
-		cout <<  A << endl;
-		cout << "Sum of all elements\n " << sum(A,0) << endl;
-		cout <<  "Column sums = \n" << sum(A,1) << endl;
-        cout <<  "Row sums = \n" << sum(A,2) << endl;
-        // cout << "Tensor, Layer sums\n " << sum(A,3) << endl;
+	cout <<  A << endl;
+	cout << "Sum of all elements\n " << sum(A,0) << endl;
+	cout <<  "Column sums = \n" << sum(A,1) << endl;
+    cout <<  "Row sums = \n" << sum(A,2) << endl;
+    // cout << "Tensor, Layer sums\n " << sum(A,3) << endl;
 	 
 	return 0;
 }

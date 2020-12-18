@@ -28,10 +28,9 @@ int main ()
 #else	  
 	using Scalar = double;
 #endif
-// --------------------------------------------- //
 		
 	using Matrix = mtl::mat::dense2D< Scalar >;
-	Matrix A = elemat< Matrix >(8,3,4,2);   //
+	Matrix A = elemat< Matrix >(8,3,4,2);
     cout << setprecision(5);
 	std::cout <<  A << std::endl;
 

@@ -12,7 +12,7 @@
 #include <matpak/toeplitz.hpp>
 
 // Selects posits or floats
-#define USE_POSIT 1
+#define USE_POSIT 0
 
 int main ()
 {
@@ -21,10 +21,18 @@ int main ()
 	using namespace sw::unum;
 	using namespace sw::hprblas;
 	using namespace sw::hprblas::matpak;
-	
+
+#if USE_POSIT
+    	constexpr size_t nbits = 32;
+		constexpr size_t es = 2;
+		using Scalar = posit<nbits, es>;
+		cout << "\nUsing POSIT<" << nbits << "," <<  es << ">\n" <<  endl;
+#else	  
+		using Scalar = double;
+#endif
+
 	cout << setprecision(5);
 	{
-		using Scalar = double;
 		using Vector = mtl::vec::dense_vector< Scalar >;
 		Vector c{1, 2, 3, 4};
 		Vector r{7, 5, 6, 7, 8};

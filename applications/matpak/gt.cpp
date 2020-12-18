@@ -33,10 +33,9 @@ int main ()
 	using Scalar = double;
 #endif
 
-	// ----------------------------- //
 	using Matrix = mtl::mat::dense2D< Scalar >;
-	Matrix A = rowsto< Matrix >(5,5);   //
-	Matrix B = rowsto< Matrix >(5,5);   //
+	Matrix A = rowsto< Matrix >(5,5);   
+	Matrix B = rowsto< Matrix >(5,5);   
 
 	// B = A;
 	std::cout <<  gt(A, B) << std::endl;

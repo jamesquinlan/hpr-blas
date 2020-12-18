@@ -48,20 +48,19 @@ int main ()
 #endif
 
 
-		Matrix A = rowsto< Matrix >(7,7);   //
-		cout << "Matrix A = \n" << A << endl;
-		cout <<  "Size A = " << size(A) << endl;
+	Matrix A = rowsto< Matrix >(7,7);   //
+	cout << "Matrix A = \n" << A << endl;
+	cout <<  "Size A = " << size(A) << endl;
 
 	//	Matrix B = uniform_rand<Matrix>(6,6);
 	//	cout << "Matrix B = \n" << B << endl;
 
 
-	 //submatrix from matrix per irange
+	//submatrix from matrix per irange
     using mtl::irange;
     irange row(2, 4), col(1, 7);
     dense2D<double> B1= A[row][col];
-	 std::cout << "B1 is\n" << B1 << "\n";
-
+	std::cout << "B1 is\n" << B1 << "\n";
 
 	return 0;
 }

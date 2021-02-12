@@ -7,7 +7,7 @@
 // Boost arbitrary precision floats
 #include <boost/multiprecision/cpp_bin_float.hpp>
 // Universal arbitrary precision integers
-#include <universal/integer/integer>
+#include <universal/number/integer/integer>
 
 // enable INITLISTs with MTL vectors and matrices
 #ifndef MTL_WITH_INITLIST
@@ -77,7 +77,7 @@ with the least common multiple resolves this problem.
 template<size_t N = 12>     // default is set to 12 to catch any poor behavior of the (n over k) implementation
 void EnumerateHilbertMatrices() {
 	using namespace std;
-	using namespace sw::unum;
+	using namespace sw::universal;
 	using namespace sw::hprblas;
 
 	// TBD: N = 10 works, but N = 11 and up fails catastrophically... 
@@ -216,12 +216,12 @@ void HilbertInverseTest(size_t N) {
 int main(int argc, char** argv)
 try {
 	using namespace std;
-	using namespace sw::unum;
+	using namespace sw::universal;
 	using namespace sw::hprblas;
 
 	int nrOfFailedTestCases = 0;
 
-	using IntegerType = sw::unum::integer<128>;
+	using IntegerType = sw::universal::integer<128>;
 	EnumerateHilbertMatrixScalingFactors(IntegerType(30));
 	
 	//EnumerateHilbertMatrices();
@@ -243,15 +243,15 @@ catch (char const* msg) {
 	std::cerr << msg << std::endl;
 	return EXIT_FAILURE;
 }
-catch (const posit_arithmetic_exception& err) {
+catch (const sw::universal::posit_arithmetic_exception& err) {
 	std::cerr << "Uncaught posit arithmetic exception: " << err.what() << std::endl;
 	return EXIT_FAILURE;
 }
-catch (const quire_exception& err) {
+catch (const sw::universal::quire_exception& err) {
 	std::cerr << "Uncaught quire exception: " << err.what() << std::endl;
 	return EXIT_FAILURE;
 }
-catch (const posit_internal_exception& err) {
+catch (const sw::universal::posit_internal_exception& err) {
 	std::cerr << "Uncaught posit internal exception: " << err.what() << std::endl;
 	return EXIT_FAILURE;
 }

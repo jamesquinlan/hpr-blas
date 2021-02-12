@@ -28,7 +28,7 @@ try {
 	result = sw::hprblas::dot(vecSize, x, 1, y, 1);
 	cout << "DOT product is " << setprecision(20) << result << endl;
 
-	using Posit = sw::unum::posit<nbits, es>;
+	using Posit = sw::universal::posit<nbits, es>;
 	vector<Posit> px(vecSize), py(vecSize);
 	randomVectorFillAroundOneEPS(vecSize, px);  //	sampleVector("px", px);
 	randomVectorFillAroundOneEPS(vecSize, py);  // 	sampleVector("py", py);
@@ -46,15 +46,15 @@ catch (char const* msg) {
 	std::cerr << msg << std::endl;
 	return EXIT_FAILURE;
 }
-catch (const posit_arithmetic_exception& err) {
+catch (const sw::universal::posit_arithmetic_exception& err) {
 	std::cerr << "Uncaught posit arithmetic exception: " << err.what() << std::endl;
 	return EXIT_FAILURE;
 }
-catch (const quire_exception& err) {
+catch (const sw::universal::quire_exception& err) {
 	std::cerr << "Uncaught quire exception: " << err.what() << std::endl;
 	return EXIT_FAILURE;
 }
-catch (const posit_internal_exception& err) {
+catch (const sw::universal::posit_internal_exception& err) {
 	std::cerr << "Uncaught posit internal exception: " << err.what() << std::endl;
 	return EXIT_FAILURE;
 }

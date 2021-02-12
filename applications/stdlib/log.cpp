@@ -8,6 +8,8 @@
 #include <boost/math/special_functions/gamma.hpp>
 #include <hprblas>
 
+using namespace sw::universal;
+
 // define a true 256-bit IEEE floating point type
 constexpr size_t bits_in_octand = 113 + 128;
 using cpp_bin_float_octand = boost::multiprecision::number<boost::multiprecision::backends::cpp_bin_float<bits_in_octand, boost::multiprecision::backends::digit_base_2, void, boost::int16_t, -16382, 16383>, boost::multiprecision::expression_template_option::et_off>;
@@ -34,7 +36,7 @@ void dumpPair(std::vector<Real>& args, std::vector<Real>& nodes) {
 int main(int argc, char** argv)
 try {
 	using namespace std;
-	using namespace sw::unum;
+	using namespace sw::universal;
 
 	using Real = qp;
 	cout << setprecision(numeric_limits<qp>::digits10);

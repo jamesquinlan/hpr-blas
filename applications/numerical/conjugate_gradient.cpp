@@ -4,7 +4,7 @@
 //
 // This file is part of the universal numbers project, which is released under an MIT Open Source license.
 #include <hprblas>
-#include <universal/posit/posit>
+#include <universal/number/posit/posit>
 #include <boost/multiprecision/cpp_bin_float.hpp>
 
 typedef boost::multiprecision::number<boost::multiprecision::backends::cpp_bin_float<11, boost::multiprecision::backends::digit_base_2, void, boost::int16_t, -32, 31>, boost::multiprecision::expression_template_option::et_off> cpp_bin_float_half;
@@ -60,7 +60,7 @@ unsigned CG(const Matrix& A, const Vector& b, Vector& x, Real epsilon) {
 // Conjugate Gradient algorithm, returns the iteration number of convergence
 template<typename Matrix, typename Vector, typename Real>
 unsigned fdpCG(const Matrix& A, const Vector& b, Vector& x, Real epsilon) {
-	using namespace sw::unum;
+	using namespace sw::universal;
 	//using Real = Vector::value_type;
 	// starting x is provided by calling context
 	unsigned k = 0;
@@ -91,7 +91,7 @@ unsigned fdpCG(const Matrix& A, const Vector& b, Vector& x, Real epsilon) {
 // Conjugate Gradient algorithm, returns the iteration number of convergence
 template<typename Matrix, typename Vector, typename Real>
 unsigned fdp2CG(const Matrix& A, const Vector& b, Vector& x, Real epsilon) {
-	using namespace sw::unum;
+	using namespace sw::universal;
 	//using Real = Vector::value_type;
 	// starting x is provided by calling context
 	unsigned k = 0;
@@ -145,10 +145,10 @@ void CGdriver(unsigned N, Real epsilon) {
 
 // CG with fdp applied to alpha/beta calculation only
 template<size_t nbits, size_t es>
-void fdpCGdriver(unsigned N, sw::unum::posit<nbits,es> epsilon) {
+void fdpCGdriver(unsigned N, sw::universal::posit<nbits,es> epsilon) {
 	using namespace std;
 	using namespace mtl;
-	using Real = sw::unum::posit<nbits, es>;
+	using Real = sw::universal::posit<nbits, es>;
 	using Matrix = mtl::dense2D<Real>;
 	using Vector = mtl::dense_vector<Real>;
 
@@ -171,10 +171,10 @@ void fdpCGdriver(unsigned N, sw::unum::posit<nbits,es> epsilon) {
 
 // CG with fdp applied to alpha/beta and to matvec A * p as well
 template<size_t nbits, size_t es>
-void fdp2CGdriver(unsigned N, sw::unum::posit<nbits, es> epsilon) {
+void fdp2CGdriver(unsigned N, sw::universal::posit<nbits, es> epsilon) {
 	using namespace std;
 	using namespace mtl;
-	using Real = sw::unum::posit<nbits, es>;
+	using Real = sw::universal::posit<nbits, es>;
 	using Matrix = mtl::dense2D<Real>;
 	using Vector = mtl::dense_vector<Real>;
 
@@ -199,7 +199,7 @@ void fdp2CGdriver(unsigned N, sw::unum::posit<nbits, es> epsilon) {
 int main(int argc, char** argv)
 try {
 	using namespace std;
-	using namespace sw::unum;
+	using namespace sw::universal;
 
 	string separation_string = "=================================================================\n";
 	constexpr unsigned N = 10;
@@ -243,15 +243,15 @@ catch (char const* msg) {
 	std::cerr << msg << std::endl;
 	return EXIT_FAILURE;
 }
-catch (const posit_arithmetic_exception& err) {
+catch (const sw::universal::posit_arithmetic_exception& err) {
 	std::cerr << "Uncaught posit arithmetic exception: " << err.what() << std::endl;
 	return EXIT_FAILURE;
 }
-catch (const quire_exception& err) {
+catch (const sw::universal::quire_exception& err) {
 	std::cerr << "Uncaught quire exception: " << err.what() << std::endl;
 	return EXIT_FAILURE;
 }
-catch (const posit_internal_exception& err) {
+catch (const sw::universal::posit_internal_exception& err) {
 	std::cerr << "Uncaught posit internal exception: " << err.what() << std::endl;
 	return EXIT_FAILURE;
 }

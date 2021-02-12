@@ -22,7 +22,7 @@ template<typename Scalar>
 void GenerateNumericalAnalysisTestCase(const std::string& header, unsigned N, bool verbose = false) {
 	using namespace std;
 	using namespace mtl;
-	using namespace sw::unum;
+	using namespace sw::universal;
 	using namespace sw::hprblas;
 
 	std::cout << ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n" << header << std::endl;
@@ -83,7 +83,7 @@ int main(int argc, char** argv)
 try {
 	using namespace std;
 	using namespace mtl;
-	using namespace sw::unum;
+	using namespace sw::universal;
 	using namespace sw::hprblas;
 	using namespace boost::multiprecision;
 
@@ -111,15 +111,15 @@ catch (char const* msg) {
 	std::cerr << msg << std::endl;
 	return EXIT_FAILURE;
 }
-catch (const posit_arithmetic_exception& err) {
+catch (const sw::universal::posit_arithmetic_exception& err) {
 	std::cerr << "Uncaught posit arithmetic exception: " << err.what() << std::endl;
 	return EXIT_FAILURE;
 }
-catch (const quire_exception& err) {
+catch (const sw::universal::quire_exception& err) {
 	std::cerr << "Uncaught quire exception: " << err.what() << std::endl;
 	return EXIT_FAILURE;
 }
-catch (const posit_internal_exception& err) {
+catch (const sw::universal::posit_internal_exception& err) {
 	std::cerr << "Uncaught posit internal exception: " << err.what() << std::endl;
 	return EXIT_FAILURE;
 }

@@ -8,11 +8,13 @@
 #define POSIT_THROW_ARITHMETIC_EXCEPTION 1
 #include <hprblas>
 
+using namespace sw::universal;
+
 int main(int argc, char** argv)
 try {
 	using namespace std;
 	using namespace mtl;
-	using namespace sw::unum;
+	using namespace sw::universal;
 	using namespace sw::hprblas;
 
 	int nrOfFailedTestCases = 0;

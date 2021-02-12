@@ -12,7 +12,7 @@ int main(int argc, char** argv)
 try {
 	using namespace std;
 	using namespace mtl;
-	using namespace sw::unum;
+	using namespace sw::universal;
 	using namespace sw::hprblas;
 
 	int nrOfFailedTestCases = 0;
@@ -44,7 +44,7 @@ catch (char const* msg) {
 	std::cerr << "caught ad hoc exception: " << msg << std::endl;
 	return EXIT_FAILURE;
 }
-catch (posit_arithmetic_exception& err) {
+catch (const sw::universal::posit_arithmetic_exception& err) {
 	std::cerr << "uncaught posit arithmetic exception: " << err.what() << std::endl;
 	return EXIT_FAILURE;
 }

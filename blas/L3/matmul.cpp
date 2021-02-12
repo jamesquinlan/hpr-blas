@@ -9,7 +9,7 @@
 #include "common.hpp"
 #define POSIT_FAST_POSIT_16_1 1
 #define POSIT_FAST_POSIT_32_2 1
-#include <universal/posit/posit>
+#include <universal/number/posit/posit>
 #include <hprblas>
 // matrix generators
 #include <generators/matrix_generators.hpp>
@@ -54,9 +54,9 @@ void MeasureMatrixMultiplyPerformance(const std::string& metric) {
 int main(int argc, char** argv)
 try {
 	using namespace std;
-	using namespace sw::unum;
+	using namespace sw::universal;
 	using namespace sw::hprblas;
-	//using namespace mtl;  both sw::unum and mtl:: contain a size() operator, we can break that ambiguity by not pulling in mtl:: explicitely
+	//using namespace mtl;  both sw::universal and mtl:: contain a size() operator, we can break that ambiguity by not pulling in mtl:: explicitely
 
 	// a 32-bit float and a <27,1> posit have the same number of significand bits around 1.0
 	constexpr size_t nbits = 16;
@@ -92,15 +92,15 @@ catch (char const* msg) {
 	std::cerr << msg << std::endl;
 	return EXIT_FAILURE;
 }
-catch (const posit_arithmetic_exception& err) {
+catch (const sw::universal::posit_arithmetic_exception& err) {
 	std::cerr << "Uncaught posit arithmetic exception: " << err.what() << std::endl;
 	return EXIT_FAILURE;
 }
-catch (const quire_exception& err) {
+catch (const sw::universal::quire_exception& err) {
 	std::cerr << "Uncaught quire exception: " << err.what() << std::endl;
 	return EXIT_FAILURE;
 }
-catch (const posit_internal_exception& err) {
+catch (const sw::universal::posit_internal_exception& err) {
 	std::cerr << "Uncaught posit internal exception: " << err.what() << std::endl;
 	return EXIT_FAILURE;
 }
